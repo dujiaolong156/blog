@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="前端项目接入 Sentry背景将近前端项目接入 Sentry 的信息介绍如下，方便大家使用，也希望能给其他需要接入的同学提供一些参考，理解有误的地方，欢迎大家指正。 接入的基础信息Sentry 账户信息使用的 Sentry 版本信息 @sentry&#x2F;browser  5.14.2  FullStory 账户信息 email: dujiaolong0001@gmail.com  接入步骤1.去 [S">
+<meta property="og:type" content="article">
+<meta property="og:title" content="新文章">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;19&#x2F;%E6%8E%A5%E5%85%A5sentry%E5%AE%9E%E8%B7%B5&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前端项目接入 Sentry背景将近前端项目接入 Sentry 的信息介绍如下，方便大家使用，也希望能给其他需要接入的同学提供一些参考，理解有误的地方，欢迎大家指正。 接入的基础信息Sentry 账户信息使用的 Sentry 版本信息 @sentry&#x2F;browser  5.14.2  FullStory 账户信息 email: dujiaolong0001@gmail.com  接入步骤1.去 [S">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.showdoc.cc&#x2F;server&#x2F;api&#x2F;common&#x2F;visitfile&#x2F;sign&#x2F;b1dd04d2733125f31a413f55f2677297?showdoc&#x3D;.jpg">
+<meta property="article:published_time" content="2020-03-18T16:05:11.000Z">
+<meta property="article:modified_time" content="2020-03-18T16:37:52.295Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;www.showdoc.cc&#x2F;server&#x2F;api&#x2F;common&#x2F;visitfile&#x2F;sign&#x2F;b1dd04d2733125f31a413f55f2677297?showdoc&#x3D;.jpg">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>新文章</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.1.1"></head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/gabithume" target="_blank" rel="noopener">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/12/15/hello-world/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/03/19/%E6%8E%A5%E5%85%A5sentry%E5%AE%9E%E8%B7%B5/" target="_blank" rel="noopener"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/03/19/%E6%8E%A5%E5%85%A5sentry%E5%AE%9E%E8%B7%B5/&text=新文章" target="_blank" rel="noopener"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/03/19/%E6%8E%A5%E5%85%A5sentry%E5%AE%9E%E8%B7%B5/&title=新文章" target="_blank" rel="noopener"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/03/19/%E6%8E%A5%E5%85%A5sentry%E5%AE%9E%E8%B7%B5/&is_video=false&description=新文章" target="_blank" rel="noopener"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=新文章&body=Check out this article: http://yoursite.com/2020/03/19/%E6%8E%A5%E5%85%A5sentry%E5%AE%9E%E8%B7%B5/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/03/19/%E6%8E%A5%E5%85%A5sentry%E5%AE%9E%E8%B7%B5/&title=新文章" target="_blank" rel="noopener"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/03/19/%E6%8E%A5%E5%85%A5sentry%E5%AE%9E%E8%B7%B5/&title=新文章" target="_blank" rel="noopener"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/03/19/%E6%8E%A5%E5%85%A5sentry%E5%AE%9E%E8%B7%B5/&title=新文章" target="_blank" rel="noopener"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/03/19/%E6%8E%A5%E5%85%A5sentry%E5%AE%9E%E8%B7%B5/&title=新文章" target="_blank" rel="noopener"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/03/19/%E6%8E%A5%E5%85%A5sentry%E5%AE%9E%E8%B7%B5/&name=新文章&description=" target="_blank" rel="noopener"><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前端项目接入-Sentry"><span class="toc-number">1.</span> <span class="toc-text">前端项目接入 Sentry</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-number">1.1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接入的基础信息"><span class="toc-number">1.2.</span> <span class="toc-text">接入的基础信息</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Sentry-账户信息"><span class="toc-number">1.2.0.0.1.</span> <span class="toc-text">Sentry 账户信息</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#使用的-Sentry-版本信息"><span class="toc-number">1.2.0.0.2.</span> <span class="toc-text">使用的 Sentry 版本信息</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#FullStory-账户信息"><span class="toc-number">1.2.0.0.3.</span> <span class="toc-text">FullStory 账户信息</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接入步骤"><span class="toc-number">1.3.</span> <span class="toc-text">接入步骤</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        新文章
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Hexo</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2020-03-18T16:05:11.000Z" itemprop="datePublished">2020-03-19</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="前端项目接入-Sentry"><a href="#前端项目接入-Sentry" class="headerlink" title="前端项目接入 Sentry"></a>前端项目接入 Sentry</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>将近前端项目接入 Sentry 的信息介绍如下，方便大家使用，也希望能给其他需要接入的同学提供一些参考，理解有误的地方，欢迎大家指正。</p>
+<h2 id="接入的基础信息"><a href="#接入的基础信息" class="headerlink" title="接入的基础信息"></a>接入的基础信息</h2><h5 id="Sentry-账户信息"><a href="#Sentry-账户信息" class="headerlink" title="Sentry 账户信息"></a>Sentry 账户信息</h5><h5 id="使用的-Sentry-版本信息"><a href="#使用的-Sentry-版本信息" class="headerlink" title="使用的 Sentry 版本信息"></a>使用的 Sentry 版本信息</h5><blockquote>
+<p>@sentry/browser  5.14.2</p>
+</blockquote>
+<h5 id="FullStory-账户信息"><a href="#FullStory-账户信息" class="headerlink" title="FullStory 账户信息"></a>FullStory 账户信息</h5><blockquote>
+<p>email: <a href="mailto:dujiaolong0001@gmail.com">dujiaolong0001@gmail.com</a></p>
+</blockquote>
+<h2 id="接入步骤"><a href="#接入步骤" class="headerlink" title="接入步骤"></a>接入步骤</h2><p>1.去 [Sentry] 官网注册账号，新建项目 </p>
+<p><img src="https://www.showdoc.cc/server/api/common/visitfile/sign/b1dd04d2733125f31a413f55f2677297?showdoc=.jpg" alt="注册 Sentry 账号" title="注册 Sentry 账号"></p>
+<p>2.准备项目分支  feature/sentry</p>
+<p>3.安装 SDK</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Using yarn</span><br><span class="line">$ yarn add @sentry&#x2F;browser@5.14.2</span><br><span class="line"></span><br><span class="line"># Using npm</span><br><span class="line">$ npm install @sentry&#x2F;browser@5.14.2</span><br></pre></td></tr></table></figure>
+
+<p>4.配置 SDK, 将sentry集成到项目中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    import React from &#39;react&#39;;</span><br><span class="line">    import ReactDOM from &#39;react-dom&#39;;</span><br><span class="line">    import App from &#39;.&#x2F;App&#39;;</span><br><span class="line">    import * as serviceWorker from &#39;.&#x2F;serviceWorker&#39;;</span><br><span class="line">    import * as Sentry from &#39;@sentry&#x2F;browser&#39;;</span><br><span class="line">	</span><br><span class="line">    Sentry.init(&#123;</span><br><span class="line">      dsn: &#39;https:&#x2F;&#x2F;&lt;key&gt;@sentry.io&#x2F;&lt;project&gt;&#39;,</span><br><span class="line">	  environment: process.env.NODE_ENV, &#x2F;&#x2F; 用于区分 dev&#x2F;prod 环境，以便在sentry issue 页面上方筛选环境来查看不同环境的异常信息 &#125;);</span><br><span class="line">    </span><br><span class="line">    ReactDOM.render(&lt;App &#x2F;&gt;, document.querySelector(&#39;#root&#39;));</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;		</span><br><span class="line"></span><br><span class="line">5.测试触发 event，即在项目中抛出一个异常，一下任何一个都可以，或者其他错误</span><br></pre></td></tr></table></figure>
+<pre><code>// 同步运行时错误
+  let name = &apos;jartto&apos;;
+  console.log(nam);
+// 手动抛出一个 Error
+throw Error(&apos;这是一个 Error&apos;);
+// 写一个没有 catch 的 Promise
+Promise.reject(&apos;promise error&apos;);</code></pre><pre><code>6.检测异常通知是否收到，若收到通知，表示项目接入 Sentry 初步完成
+在测试出发 event 之后，查看两处是否收到异常通知
+- 注册的邮箱中
+![邮箱接收到通知](https://www.showdoc.cc/server/api/common/visitfile/sign/2cef77372706a917ee5cab0e0701cacf?showdoc=.jpg &quot;邮箱接收到通知&quot;)
+- Sentry 的 Issue 列表页
+![Sentry 的 Issue 列表页收到异常](https://www.showdoc.cc/server/api/common/visitfile/sign/23178da274312521443c2e61f3e723a9?showdoc=.jpg &quot;Sentry 的 Issue 列表页收到异常&quot;)
+7.增加项目成员，在项目所在 team 中增加开发同学的邮箱，这样大家都可以接收到异常监控通知
+    步骤：projects -&gt; 选择 team -&gt; add Members -&gt; invite Member -&gt; 在弹窗中输入开发同学的邮箱即可发送邀请加入
+![增加项目成员](https://www.showdoc.cc/server/api/common/visitfile/sign/20c129f50d7c7f071adb01ebc9b340ad?showdoc=.jpg &quot;增加项目成员&quot;)
+## 接入后已拥有的能力
+- 监控到异常后第一时间通知到邮箱(后期会把开发小伙伴的邮箱都加入,目前只有世博和我)
+- 定位到出错的 url
+- 具体的错误文本、类型
+- 客户端的一些信息（浏览器版本、操作系统、用户行为）
+- 区分develop 和 production 环境
+- TODO:  定位到出错的代码文件（配合 sourceMap ）
+- TODO:  添加 release 信息，如何解决每次发版自动添加 release 信息
+## 关于前端监控方面正在尝试的事
+- 接入 [FullStory](https://www.fullstory.com/), 在异常发生时支持回放用户行为，当前进行到 Sentry 账号与 FullStory 账号绑定阶段
+## 一些采坑记录
+1. 想自己尝试接入流程的同学，避免使用QQ邮箱注册 Sentry ，会提示邮箱格式不合法
+1. 项目中一些自定义标签在浏览器报错的信息，是不被 Sentry 收集的
+## Sentry 还可以做什么
+- 过滤错误信息，添加 ignoreErrors, 可以将那些不需要被关注的异常信息过滤掉，使其不在通知范围内
+- 定制错误信息，通过 setExtra、setUser、setTag 等方法定制错误信息
+## tips
+关于上传 sourceMap，我们只有在开发环境，才会用到 sourceMap，线上环境如果加载sourceMap，不仅影响用户体验，而且也不安全，那 Sentry 是如何解决的？Sentry 会要求用户把 sourceMap 上传到 Sentry 的服务器，通过每次的 release 版本号来管理 sourceMap，如果上传到 Sentry 官网的服务器觉得不安全外，可以自建sentry服务。官方提供了两种方式
+    - sentry-cli 命令行
+    - webpack插件
+
+    &gt;官方文档：https://docs.sentry.io/cli/configuration/#properties-files
+
+</code></pre>
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/gabithume" target="_blank" rel="noopener">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前端项目接入-Sentry"><span class="toc-number">1.</span> <span class="toc-text">前端项目接入 Sentry</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-number">1.1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接入的基础信息"><span class="toc-number">1.2.</span> <span class="toc-text">接入的基础信息</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Sentry-账户信息"><span class="toc-number">1.2.0.0.1.</span> <span class="toc-text">Sentry 账户信息</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#使用的-Sentry-版本信息"><span class="toc-number">1.2.0.0.2.</span> <span class="toc-text">使用的 Sentry 版本信息</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#FullStory-账户信息"><span class="toc-number">1.2.0.0.3.</span> <span class="toc-text">FullStory 账户信息</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接入步骤"><span class="toc-number">1.3.</span> <span class="toc-text">接入步骤</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/03/19/%E6%8E%A5%E5%85%A5sentry%E5%AE%9E%E8%B7%B5/" target="_blank" rel="noopener"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/03/19/%E6%8E%A5%E5%85%A5sentry%E5%AE%9E%E8%B7%B5/&text=新文章" target="_blank" rel="noopener"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/03/19/%E6%8E%A5%E5%85%A5sentry%E5%AE%9E%E8%B7%B5/&title=新文章" target="_blank" rel="noopener"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/03/19/%E6%8E%A5%E5%85%A5sentry%E5%AE%9E%E8%B7%B5/&is_video=false&description=新文章" target="_blank" rel="noopener"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=新文章&body=Check out this article: http://yoursite.com/2020/03/19/%E6%8E%A5%E5%85%A5sentry%E5%AE%9E%E8%B7%B5/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/03/19/%E6%8E%A5%E5%85%A5sentry%E5%AE%9E%E8%B7%B5/&title=新文章" target="_blank" rel="noopener"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/03/19/%E6%8E%A5%E5%85%A5sentry%E5%AE%9E%E8%B7%B5/&title=新文章" target="_blank" rel="noopener"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/03/19/%E6%8E%A5%E5%85%A5sentry%E5%AE%9E%E8%B7%B5/&title=新文章" target="_blank" rel="noopener"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/03/19/%E6%8E%A5%E5%85%A5sentry%E5%AE%9E%E8%B7%B5/&title=新文章" target="_blank" rel="noopener"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/03/19/%E6%8E%A5%E5%85%A5sentry%E5%AE%9E%E8%B7%B5/&name=新文章&description=" target="_blank" rel="noopener"><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/gabithume" target="_blank" rel="noopener">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-86660611-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+
